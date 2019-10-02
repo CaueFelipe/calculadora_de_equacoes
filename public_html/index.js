@@ -13,17 +13,22 @@ $(document).ready(function () {
         var tol = $("#tol").val();
         raiz_nr(f, fl, x, tol);
     });
-    $("#back").click(function () {window.location.href = "index.html";});
-    $("#nr").click(function () {window.location.href = "newton-raphson.html";});
-    $("#bi").click(function () {window.location.href = "bissecao.html";});
+    $("#back").click(function () {
+        window.location.href = "index.html";
+    });
+    $("#nr").click(function () {
+        window.location.href = "newton-raphson.html";
+    });
+    $("#bi").click(function () {
+        window.location.href = "bissecao.html";
+    });
 });
 
 function raiz_nr(f, fl, x, tol) {
-    var x = x;
     var fx = eval(funcao(x, f));
     var flx = eval(funcao(x, fl));
     var x_ant = x;
-    x = x - fx / flx;
+    var x = x - fx / flx;
     var i = 1;
     while (Math.abs(x_ant - x) > tol) {
         i++;
@@ -34,6 +39,7 @@ function raiz_nr(f, fl, x, tol) {
     }
     $("#resultado").text(x);
     $("#iteracao").text(i);
+
 }
 
 
@@ -41,7 +47,6 @@ function raiz_bi(f, a, b, tol) {
     var i = 0;
     a = Number(a);
     b = Number(b);
-    $("#log").text(f + " " + a + " " + b + " " + tol);
     while (Math.abs(b - a) > tol) {
         i++;
         var x = (a + b) / 2;
@@ -53,7 +58,7 @@ function raiz_bi(f, a, b, tol) {
             a = x;
         }
     }
-    $("#resultado").text(x);
+    $("#resultado").text((a+b)/2);
     $("#iteracao").text(i);
 }
 
@@ -80,7 +85,7 @@ function funcao(x, f) {
 }
 
 function replace_all(string, find, replace) {
-    
+
     while (string.indexOf(find) >= 0)
         string = string.replace(find, replace);
     return string;

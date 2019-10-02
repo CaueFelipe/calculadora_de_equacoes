@@ -7,10 +7,9 @@ body{
     background-color: aliceblue;
 }
 
-
-
-
-
+main{
+    margin-top: 40px;
+}
 
 .quadro{
     background-color: white;
