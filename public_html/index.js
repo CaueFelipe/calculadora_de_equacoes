@@ -1,34 +1,63 @@
 $(document).ready(function () {
-    $("button").click(function () {
+    $("#calc-bi").click(function () {
         var f = $("#f").val();
         var a = $("#a").val();
         var b = $("#b").val();
         var tol = $("#tol").val();
-        raiz(f, a, b, tol);
+        raiz_bi(f, a, b, tol);
     });
+    $("#calc-nr").click(function () {
+        var f = $("#f").val();
+        var fl = $("#fl").val();
+        var x = $("#x").val();
+        var tol = $("#tol").val();
+        raiz_nr(f, fl, x, tol);
+    });
+    $("#back").click(function () {window.location.href = "index.html";});
+    $("#nr").click(function () {window.location.href = "newton-raphson.html";});
+    $("#bi").click(function () {window.location.href = "bissecao.html";});
 });
 
+function raiz_nr(f, fl, x, tol) {
+    var x = x;
+    var fx = eval(funcao(x, f));
+    var flx = eval(funcao(x, fl));
+    var x_ant = x;
+    x = x - fx / flx;
+    var i = 1;
+    while (Math.abs(x_ant - x) > tol) {
+        i++;
+        fx = eval(funcao(x, f));
+        flx = eval(funcao(x, fl));
+        x_ant = x;
+        x = x - fx / flx;
+    }
+    $("#resultado").text(x);
+    $("#iteracao").text(i);
+}
 
-function raiz(f, a, b, tol) {
+
+function raiz_bi(f, a, b, tol) {
     var i = 0;
     a = Number(a);
     b = Number(b);
-    while (Math.abs(b-a) > tol) {
+    $("#log").text(f + " " + a + " " + b + " " + tol);
+    while (Math.abs(b - a) > tol) {
         i++;
-        var x = (a+b)/2;
+        var x = (a + b) / 2;
         var f_a = eval(funcao(a, f));
         var f_x = eval(funcao(x, f));
-        if(f_a*f_x<0){
+        if (f_a * f_x < 0) {
             b = x;
         } else {
             a = x;
         }
     }
-    $("#resultado").text((a+b)/2);
+    $("#resultado").text(x);
     $("#iteracao").text(i);
 }
 
-function funcao(x, f){
+function funcao(x, f) {
     var letra_x = "x";
     var sen_x = "sen(x)";
     var cos_x = "cos(x)";
@@ -51,6 +80,7 @@ function funcao(x, f){
 }
 
 function replace_all(string, find, replace) {
+    
     while (string.indexOf(find) >= 0)
         string = string.replace(find, replace);
     return string;

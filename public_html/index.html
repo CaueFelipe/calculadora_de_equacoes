@@ -1,49 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Início</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <script src="index.js"></script>
+        <script src="jquery.js"></script>
+		<script src="index.js"></script>
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div>
-            <div class="row">
-                <div class="form-group col-3">
-                    <label for="f">FUNÇÃO</label>
-                    <input class="form-control" type="text" id="f">
-                </div>
-                <div class="form-group col-3">
-                    <label for="a">VALOR DE "a":</label>
-                    <input class="form-control" type="text" id="a">
-                </div>
-                <div class="form-group col-3">
-                    <label for="b">VALOR DE "b":</label>
-                    <input class="form-control" type="text" id="b">
-                </div>
-                <div class="form-group col-3">
-                    <label for="tol">TOLERÂNCIA:</label>
-                    <input class="form-control" type="text" id="tol">
-                </div>
-            </div>
-            <button class="btn btn-primary btn-block" id="calc">Calcular</button>
-            <div class="row">
-                <div class="col-sm container quadro">
-                    <h1>RESULTADO</h1>
-                    <h1 id="resultado"></h1>
-                </div>
-                <div class="col-sm container quadro">
-                    <h1>ITERAÇÃO</h1>
-                    <h1 id="iteracao"></h1>
-                </div>
-            </div>
-            <div id="log">
-                
-            </div>
-        </div>
+        <div class="col-12">
+            <button class="btn btn-primary btn-block" id="bi">Bisseção</button>
+            <button class="btn btn-primary btn-block" id="nr">Newton-Raphson</button>    
+        </div>    
     </body>
 </html>
