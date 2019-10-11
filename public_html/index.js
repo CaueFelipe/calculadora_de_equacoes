@@ -13,6 +13,13 @@ $(document).ready(function () {
         var tol = $("#tol").val();
         raiz_nr(f, fl, x, tol);
     });
+    $("#calc-mt").click(function () {
+        var f = $("#f").val();
+        var a = Number($("#a").val());
+        var b = Number($("#b").val());
+        var n = Number($("#n").val());
+        trapezio(f, a, b, n);
+    })
     $("#back").click(function () {
         window.location.href = "index.html";
     });
@@ -22,7 +29,26 @@ $(document).ready(function () {
     $("#bi").click(function () {
         window.location.href = "bissecao.html";
     });
+    $("#mt").click(function () {
+        window.location.href = "trapezio.html";
+    });
 });
+
+function trapezio(f, a, b, n) {
+    var h = Math.abs(a - b)/n;
+    var i = 0;
+    var soma = 0;
+    var xi = a;
+    while (i < (n - 1)) {
+        i++;
+        xi += h;
+        soma += eval(funcao(xi, f));
+    }
+    var xa = eval(funcao(a, f));
+    var xb = eval(funcao(b, f));
+    var area = h/2*(xa+xb+2*soma);
+    $("#resultado").text(area);
+}
 
 function raiz_nr(f, fl, x, tol) {
     var fx = eval(funcao(x, f));
@@ -58,7 +84,7 @@ function raiz_bi(f, a, b, tol) {
             a = x;
         }
     }
-    $("#resultado").text((a+b)/2);
+    $("#resultado").text((a + b) / 2);
     $("#iteracao").text(i);
 }
 
